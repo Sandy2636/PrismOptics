@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism Optics - Experience Vision, Redefined</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc; /* A very light gray for the body background */
+      }
+      .hero-bg {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://images.unsplash.com/photo-1574258481488-6be7547545f5?q=80&w=2070&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+      }
+      .nav-link {
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #0891b2; /* Cyan accent */
+        transition: width 0.3s ease-in-out;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .section-title {
+        font-weight: 800;
+        color: #1e293b; /* Slate 800 */
+      }
+      .card-hover-effect {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+      }
+      [data-lucide] {
+        width: 24px;
+        height: 24px;
+      }
+    </style>
+  </head>
+  <body class="text-slate-700">
+    <!-- Header & Navigation -->
+    <header
+      id="header"
+      class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-slate-800 tracking-wider">
+          Prism <span class="text-cyan-600">Optics</span>
+        </a>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a
+            href="#home"
+            class="nav-link text-slate-600 hover:text-cyan-600 font-medium active"
+            >Home</a
+          >
+          <a
+            href="#collection"
+            class="nav-link text-slate-600 hover:text-cyan-600 font-medium"
+            >Collection</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-slate-600 hover:text-cyan-600 font-medium"
+            >About Us</a
+          >
+          <a
+            href="#stores"
+            class="nav-link text-slate-600 hover:text-cyan-600 font-medium"
+            >Stores</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-slate-600 hover:text-cyan-600 font-medium"
+            >Contact</a
+          >
+        </nav>
+        <a
+          href="#contact"
+          class="hidden md:inline-block bg-cyan-600 text-white font-semibold px-5 py-2 rounded-full hover:bg-cyan-700 transition duration-300 shadow-lg shadow-cyan-500/20"
+        >
+          Book Appointment
+        </a>
+        <button id="mobile-menu-button" class="md:hidden">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-slate-200"
+      >
+        <a
+          href="#home"
+          class="block py-3 px-6 text-slate-600 hover:bg-cyan-50 mobile-link"
+          >Home</a
+        >
+        <a
+          href="#collection"
+          class="block py-3 px-6 text-slate-600 hover:bg-cyan-50 mobile-link"
+          >Collection</a
+        >
+        <a
+          href="#about"
+          class="block py-3 px-6 text-slate-600 hover:bg-cyan-50 mobile-link"
+          >About Us</a
+        >
+        <a
+          href="#stores"
+          class="block py-3 px-6 text-slate-600 hover:bg-cyan-50 mobile-link"
+          >Stores</a
+        >
+        <a
+          href="#contact"
+          class="block py-3 px-6 text-slate-600 hover:bg-cyan-50 mobile-link"
+          >Contact</a
+        >
+        <div class="p-4">
+          <a
+            href="#contact"
+            class="w-full text-center block bg-cyan-600 text-white font-semibold px-5 py-3 rounded-full hover:bg-cyan-700 transition duration-300"
+          >
+            Book Appointment
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section 1: Landing Page (Hero) -->
+      <section
+        id="home"
+        class="hero-bg h-screen flex items-center justify-center text-white pt-20"
+      >
+        <div class="text-center px-4">
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight"
+            style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7)"
+          >
+            Experience Vision, Redefined.
+          </h1>
+          <p
+            class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-slate-200"
+            style="text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7)"
+          >
+            Discover our exclusive collection of premium eyewear, meticulously
+            crafted with precision, passion, and a timeless sense of style.
+          </p>
+          <a
+            href="#collection"
+            class="bg-white text-cyan-700 font-bold text-lg px-8 py-4 rounded-full hover:bg-slate-100 transition duration-300 transform hover:scale-105 shadow-2xl"
+          >
+            Explore Our Collection
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 2: Collection -->
+      <section id="collection" class="py-20 lg:py-28 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl section-title">
+              Our Curated Collection
+            </h2>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              From sophisticated classics to bold modern designs, find the
+              perfect pair that speaks to you.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Collection Card 1 -->
+            <div
+              class="bg-slate-50 rounded-xl overflow-hidden shadow-lg card-hover-effect"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1614715838558-27d159498a2f?q=80&w=1974&auto=format&fit=crop"
+                alt="Prescription Eyeglasses"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                  Eyeglasses
+                </h3>
+                <p class="text-slate-600">
+                  Clarity meets style with our diverse range of prescription
+                  frames for everyday wear.
+                </p>
+              </div>
+            </div>
+            <!-- Collection Card 2 -->
+            <div
+              class="bg-slate-50 rounded-xl overflow-hidden shadow-lg card-hover-effect"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1577803645773-f124034737d9?q=80&w=1974&auto=format&fit=crop"
+                alt="Stylish Sunglasses"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                  Sunglasses
+                </h3>
+                <p class="text-slate-600">
+                  Protect your eyes and elevate your look with our collection of
+                  chic, UV-blocking sunglasses.
+                </p>
+              </div>
+            </div>
+            <!-- Collection Card 3 -->
+            <div
+              class="bg-slate-50 rounded-xl overflow-hidden shadow-lg card-hover-effect"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1590480650392-1b158f955a05?q=80&w=1974&auto=format&fit=crop"
+                alt="Person wearing computer glasses"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                  Computer Glasses
+                </h3>
+                <p class="text-slate-600">
+                  Reduce digital eye strain and improve focus with our
+                  specialized blue-light filtering lenses.
+                </p>
+              </div>
+            </div>
+            <!-- Collection Card 4 -->
+            <div
+              class="bg-slate-50 rounded-xl overflow-hidden shadow-lg card-hover-effect"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1519764500243-55361b33c048?q=80&w=2070&auto=format&fit=crop"
+                alt="Kid wearing glasses"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                  Kids' Frames
+                </h3>
+                <p class="text-slate-600">
+                  Durable, comfortable, and fun frames designed to keep up with
+                  your little one's adventures.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: About Us -->
+      <section id="about" class="py-20 lg:py-28 bg-f8fafc">
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div class="lg:w-1/2 w-full">
+              <img
+                src="https://images.unsplash.com/photo-1555343883-77c8714e5088?q=80&w=2070&auto=format&fit=crop"
+                alt="Interior of a modern optics store"
+                class="rounded-2xl shadow-2xl w-full h-auto object-cover"
+              />
+            </div>
+            <div class="lg:w-1/2 w-full">
+              <h2 class="text-4xl lg:text-5xl section-title mb-6">
+                Crafting Clarity Since 2005
+              </h2>
+              <p class="text-lg text-slate-600 mb-4 leading-relaxed">
+                At Prism Optics, we believe that clear vision and great style go
+                hand-in-hand. For over 15 years, our mission has been to provide
+                our community with exceptional eye care, state-of-the-art lens
+                technology, and a handpicked selection of high-quality frames
+                from around the world.
+              </p>
+              <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                Our team of certified opticians is dedicated to finding the
+                perfect fit for your vision needs, lifestyle, and personal
+                aesthetic. We're more than just an eyewear store; we're your
+                partners in vision health.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-700">
+                <div class="flex items-center gap-4">
+                  <div class="bg-cyan-100 text-cyan-600 p-3 rounded-full">
+                    <i data-lucide="award"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Expert Opticians</h4>
+                    <p>Certified & experienced staff.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="bg-cyan-100 text-cyan-600 p-3 rounded-full">
+                    <i data-lucide="glasses"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Premium Selection</h4>
+                    <p>Curated designer frames.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="bg-cyan-100 text-cyan-600 p-3 rounded-full">
+                    <i data-lucide="scan-eye"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Advanced Tech</h4>
+                    <p>Latest lens technology.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="bg-cyan-100 text-cyan-600 p-3 rounded-full">
+                    <i data-lucide="heart"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg">Personalized Care</h4>
+                    <p>Service tailored to you.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Store Locations -->
+      <section id="stores" class="py-20 lg:py-28 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl section-title">
+              Visit Us In-Store
+            </h2>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              Experience our collection and receive expert advice at one of our
+              welcoming locations.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Location Card 1 -->
+            <div
+              class="border border-slate-200 rounded-xl p-8 text-center card-hover-effect bg-slate-50"
+            >
+              <i
+                data-lucide="map-pin"
+                class="mx-auto text-cyan-600 w-12 h-12 mb-4"
+              ></i>
+              <h3 class="text-2xl font-bold text-slate-800 mb-2">New York</h3>
+              <p class="text-slate-600">
+                123 Fashion Ave, Suite 101<br />New York, NY 10001
+              </p>
+              <p class="mt-4 text-cyan-700 font-semibold">(212) 555-0123</p>
+            </div>
+            <!-- Location Card 2 -->
+            <div
+              class="border border-slate-200 rounded-xl p-8 text-center card-hover-effect bg-slate-50"
+            >
+              <i
+                data-lucide="map-pin"
+                class="mx-auto text-cyan-600 w-12 h-12 mb-4"
+              ></i>
+              <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                Los Angeles
+              </h3>
+              <p class="text-slate-600">
+                456 Sunset Blvd<br />Los Angeles, CA 90028
+              </p>
+              <p class="mt-4 text-cyan-700 font-semibold">(310) 555-0456</p>
+            </div>
+            <!-- Location Card 3 -->
+            <div
+              class="border border-slate-200 rounded-xl p-8 text-center card-hover-effect bg-slate-50"
+            >
+              <i
+                data-lucide="map-pin"
+                class="mx-auto text-cyan-600 w-12 h-12 mb-4"
+              ></i>
+              <h3 class="text-2xl font-bold text-slate-800 mb-2">Chicago</h3>
+              <p class="text-slate-600">
+                789 Michigan Ave<br />Chicago, IL 60611
+              </p>
+              <p class="mt-4 text-cyan-700 font-semibold">(312) 555-0789</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Contact -->
+      <section id="contact" class="py-20 lg:py-28 bg-f8fafc">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl section-title">Get In Touch</h2>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              Have questions or want to book an eye exam? We'd love to hear from
+              you.
+            </p>
+          </div>
+          <div
+            class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl"
+          >
+            <form action="#" method="POST">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-semibold text-slate-600 mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-semibold text-slate-600 mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-sm font-semibold text-slate-600 mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition"
+                  placeholder="Your message..."
+                  required
+                ></textarea>
+              </div>
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="bg-cyan-600 text-white font-bold text-lg px-8 py-3 rounded-full hover:bg-cyan-700 transition duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/30"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white">
+      <div class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-1">
+            <h3 class="text-2xl font-bold tracking-wider">
+              Prism <span class="text-cyan-400">Optics</span>
+            </h3>
+            <p class="mt-4 text-slate-400">Your vision, our passion.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg text-slate-200 mb-4">
+              Quick Links
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-slate-400 hover:text-cyan-400 transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collection"
+                  class="text-slate-400 hover:text-cyan-400 transition"
+                  >Collection</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-slate-400 hover:text-cyan-400 transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#stores"
+                  class="text-slate-400 hover:text-cyan-400 transition"
+                  >Stores</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg text-slate-200 mb-4">
+              Contact Us
+            </h4>
+            <ul class="space-y-2 text-slate-400">
+              <li class="flex items-center gap-3">
+                <i data-lucide="phone" class="text-cyan-400"></i> (800) 555-0199
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="mail" class="text-cyan-400"></i>
+                contact@prismoptics.com
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg text-slate-200 mb-4">Follow Us</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="text-slate-400 hover:text-cyan-400 transition"
+                ><i data-lucide="facebook"></i
+              ></a>
+              <a href="#" class="text-slate-400 hover:text-cyan-400 transition"
+                ><i data-lucide="instagram"></i
+              ></a>
+              <a href="#" class="text-slate-400 hover:text-cyan-400 transition"
+                ><i data-lucide="twitter"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500"
+        >
+          <p>&copy; 2025 Prism Optics. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Lucide Icons
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Sticky Header Shrink
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("py-2");
+          header.classList.remove("py-4");
+        } else {
+          header.classList.add("py-4");
+          header.classList.remove("py-2");
+        }
+      });
+
+      // Active Nav Link Highlighting on Scroll
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>

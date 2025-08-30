@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism Optics | Premium Eyewear</title>
+    <meta
+      name="description"
+      content="Prism Optics – premium eyewear, prescription lenses, sunglasses & blue-light glasses. Find a store near you."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --surface: #111319;
+        --muted: #9aa3b2;
+        --text: #eaf0ff;
+        --primary: #5eead4; /* teal */
+        --accent: #a78bfa; /* violet */
+        --ring: rgba(94, 234, 212, 0.35);
+        --card: #131722;
+        --border: rgba(255, 255, 255, 0.08);
+        --grad: radial-gradient(
+            1000px 600px at 80% -10%,
+            rgba(167, 139, 250, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            800px 500px at -10% 10%,
+            rgba(94, 234, 212, 0.25),
+            transparent 60%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0)
+          );
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Layout */
+      .container {
+        width: min(1200px, 92%);
+        margin: 0 auto;
+      }
+      section {
+        padding: 80px 0;
+        position: relative;
+      }
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .section-heading h2 {
+        font-size: clamp(28px, 2.1vw + 16px, 40px);
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      .eyebrow {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: saturate(160%) blur(12px);
+        background: linear-gradient(
+          180deg,
+          rgba(10, 12, 16, 0.8),
+          rgba(10, 12, 16, 0.35)
+        );
+        border-bottom: 1px solid var(--border);
+        z-index: 40;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: conic-gradient(
+          from 200deg,
+          var(--accent),
+          var(--primary),
+          #60a5fa,
+          var(--accent)
+        );
+        box-shadow: 0 0 0 1px var(--border) inset,
+          0 12px 30px rgba(167, 139, 250, 0.2);
+      }
+      .brand b {
+        font-size: 18px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .menu {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      .menu a {
+        color: #dbe7ff;
+        opacity: 0.9;
+        font-weight: 500;
+        padding: 8px 10px;
+        border-radius: 10px;
+      }
+      .menu a:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .cta {
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-weight: 600;
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+        box-shadow: 0 4px 20px rgba(94, 234, 212, 0.15);
+      }
+
+      /* Mobile Nav */
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        padding: 8px;
+      }
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 0 18px;
+      }
+      .mobile-menu a {
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 96px 0 72px;
+        background: var(--grad);
+        position: relative;
+        overflow: hidden;
+      }
+      .grid {
+        display: grid;
+        gap: 28px;
+      }
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: clamp(34px, 4.6vw + 8px, 64px);
+        line-height: 1.02;
+        margin: 0 0 14px;
+        letter-spacing: -0.02em;
+      }
+      .lead {
+        color: #cbd5e1;
+        font-size: clamp(16px, 1.2vw + 12px, 20px);
+        max-width: 58ch;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 12px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        padding: 12px 16px;
+        border-radius: 14px;
+        font-weight: 700;
+      }
+      .btn-primary {
+        background: linear-gradient(180deg, var(--primary), #2dd4bf);
+        color: #052c2b;
+        box-shadow: 0 10px 30px rgba(94, 234, 212, 0.35);
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.06);
+        color: #e2e8f0;
+        border: 1px solid var(--border);
+      }
+      .hero-card {
+        background: radial-gradient(
+            600px 280px at -10% 10%,
+            rgba(167, 139, 250, 0.25),
+            transparent 60%
+          ),
+          var(--card);
+        border: 1px solid var(--border);
+        padding: 16px;
+        border-radius: 18px;
+      }
+      .hero-card img {
+        border-radius: 12px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: #c7d2fe;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      /* About */
+      .about {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      .about .cols {
+        grid-template-columns: 1fr 1fr;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 24px;
+      }
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .kpi {
+        background: linear-gradient(
+          180deg,
+          rgba(94, 234, 212, 0.08),
+          rgba(167, 139, 250, 0.08)
+        );
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px;
+        text-align: center;
+      }
+      .kpi b {
+        font-size: 22px;
+        display: block;
+      }
+      .kpi span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* Collection */
+      .collection-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .prod {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.02)
+        );
+        display: flex;
+        flex-direction: column;
+      }
+      .prod img {
+        aspect-ratio: 4/3;
+        object-fit: cover;
+      }
+      .prod .p-body {
+        padding: 14px 16px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+      .pill {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: #cbd5e1;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      /* Stores */
+      .stores .store-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+      .store-list {
+        display: grid;
+        gap: 14px;
+      }
+      .store {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.015)
+        );
+      }
+      .store b {
+        font-size: 16px;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .map {
+        border: 0;
+        width: 100%;
+        height: 380px;
+        border-radius: 16px;
+      }
+
+      /* Contact */
+      form {
+        display: grid;
+        gap: 12px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        outline: none;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        box-shadow: 0 0 0 6px var(--ring);
+        border-color: var(--primary);
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .contact-card {
+        display: grid;
+        grid-template-columns: 1fr 0.9fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 30px 0;
+        color: #aab4c6;
+        font-size: 14px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+      }
+
+      /* Utilities */
+      .blur-blob {
+        position: absolute;
+        inset: auto auto -120px -120px;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(
+          50% 50% at 50% 50%,
+          rgba(94, 234, 212, 0.25),
+          rgba(94, 234, 212, 0)
+        );
+        filter: blur(30px);
+        pointer-events: none;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 980px) {
+        .hero-grid,
+        .stores .store-grid,
+        .about .cols,
+        .contact-card,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .collection-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .kpis {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .menu {
+          display: none;
+        }
+        .hamburger {
+          display: block;
+        }
+        .mobile-menu.open {
+          display: flex;
+        }
+        .hero {
+          padding-top: 72px;
+        }
+      }
+      @media (max-width: 600px) {
+        .collection-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Nav -->
+    <header>
+      <div class="container nav">
+        <a class="brand" href="#home" aria-label="Prism Optics Home">
+          <div class="logo" aria-hidden="true"></div>
+          <b>PRISM OPTICS</b>
+        </a>
+        <nav class="menu" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#collection">Collection</a>
+          <a href="#stores">Stores</a>
+          <a href="#contact">Contact</a>
+          <a class="cta" href="#contact">Book Eye Test</a>
+        </nav>
+        <button class="hamburger" aria-label="Open menu" id="hamburger">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 6h18M3 12h18M3 18h18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="container mobile-menu" id="mobileMenu" aria-label="Mobile">
+        <a href="#about">About</a>
+        <a href="#collection">Collection</a>
+        <a href="#stores">Stores</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Book Eye Test</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main id="home" class="hero">
+      <div class="container grid hero-grid">
+        <div>
+          <span class="badge">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 3l2.4 4.86L20 9l-4 3.9.94 5.47L12 16.9 7.06 18.37 8 12.9 4 9l5.6-1.14L12 3z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                fill="none"
+              />
+            </svg>
+            New Season Arrivals
+          </span>
+          <h1>Sharp vision, bold style.</h1>
+          <p class="lead">
+            Discover premium prescription eyewear and sunglasses engineered for
+            comfort, clarity, and everyday confidence. Crafted with anti-glare,
+            blue-light filtering, and ultra‑light materials.
+          </p>
+          <div class="hero-cta">
+            <a href="#collection" class="btn btn-primary">Shop Collection</a>
+            <a href="#stores" class="btn btn-ghost">Find a Store</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img
+            alt="Sleek modern eyewear on acrylic blocks"
+            src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1200&auto=format&fit=crop"
+          />
+        </div>
+      </div>
+      <div class="blur-blob" aria-hidden="true"></div>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container grid cols">
+        <div class="card">
+          <span class="eyebrow">About Us</span>
+          <h2>Design‑forward eyewear. Clinical precision.</h2>
+          <p style="color: #cbd5e1; max-width: 60ch">
+            At Prism Optics, we combine optometry expertise with modern design
+            to deliver frames that feel as good as they look. Our in‑house
+            opticians cut lenses with medical‑grade accuracy using digital
+            surfacing and anti‑reflective coatings for day‑long clarity.
+          </p>
+          <div class="kpis">
+            <div class="kpi"><b>60k+</b><span>Happy Customers</span></div>
+            <div class="kpi"><b>1200+</b><span>Frame Styles</span></div>
+            <div class="kpi"><b>24h</b><span>Express Lensing</span></div>
+            <div class="kpi"><b>100%</b><span>UV Protection</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            alt="Person wearing stylish eyeglasses"
+            src="https://images.unsplash.com/photo-1524666041070-9d87656c25bb?q=80&w=1200&auto=format&fit=crop"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section id="collection">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Collection</span>
+            <h2>Signature frames & lenses</h2>
+          </div>
+          <a href="#contact" class="pill">Need help choosing? →</a>
+        </div>
+        <div class="grid collection-grid">
+          <!-- Product 1 -->
+          <article class="prod">
+            <img
+              alt="Round acetate eyeglasses"
+              src="https://images.unsplash.com/photo-1556306535-abccb096c6d9?q=80&w=1200&auto=format&fit=crop"
+            />
+            <div class="p-body">
+              <div>
+                <b>Oslo Round</b>
+                <div class="meta">Ultra‑light acetate • Rx ready</div>
+              </div>
+              <span class="pill">₹5,490</span>
+            </div>
+          </article>
+          <!-- Product 2 -->
+          <article class="prod">
+            <img
+              alt="Metal aviator sunglasses"
+              src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=1200&auto=format&fit=crop"
+            />
+            <div class="p-body">
+              <div>
+                <b>Vector Aviator</b>
+                <div class="meta">Polarized • Anti‑glare</div>
+              </div>
+              <span class="pill">₹6,990</span>
+            </div>
+          </article>
+          <!-- Product 3 -->
+          <article class="prod">
+            <img
+              alt="Square titanium frame"
+              src="https://images.unsplash.com/photo-1556306535-a43e2eac7b03?q=80&w=1200&auto=format&fit=crop"
+            />
+            <div class="p-body">
+              <div>
+                <b>Kyoto Titanium</b>
+                <div class="meta">Feather‑weight • Durable</div>
+              </div>
+              <span class="pill">₹8,450</span>
+            </div>
+          </article>
+          <!-- Product 4 -->
+          <article class="prod">
+            <img
+              alt="Cat eye glasses"
+              src="https://images.unsplash.com/photo-1519691541458-87602d0c27f6?q=80&w=1200&auto=format&fit=crop"
+            />
+            <div class="p-body">
+              <div>
+                <b>Nova Cat‑Eye</b>
+                <div class="meta">Blue‑light filter</div>
+              </div>
+              <span class="pill">₹5,990</span>
+            </div>
+          </article>
+          <!-- Product 5 -->
+          <article class="prod">
+            <img
+              alt="Classic wayfarer"
+              src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1200&auto=format&fit=crop"
+            />
+            <div class="p-body">
+              <div>
+                <b>Axis Wayfarer</b>
+                <div class="meta">Scratch‑resistant</div>
+              </div>
+              <span class="pill">₹4,750</span>
+            </div>
+          </article>
+          <!-- Product 6 -->
+          <article class="prod">
+            <img
+              alt="Rimless minimalist frame"
+              src="https://images.unsplash.com/photo-1542089363-83c5b3c0f3e3?q=80&w=1200&auto=format&fit=crop"
+            />
+            <div class="p-body">
+              <div>
+                <b>Zero Rim</b>
+                <div class="meta">Minimal • Office essential</div>
+              </div>
+              <span class="pill">₹7,490</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORES -->
+    <section id="stores" class="stores">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Stores</span>
+            <h2>Visit a Prism Optics near you</h2>
+          </div>
+          <a href="#contact" class="pill">Book an appointment</a>
+        </div>
+
+        <div class="grid store-grid">
+          <!-- List -->
+          <div class="store-list">
+            <div class="store">
+              <div>
+                <b>Prism Optics – Connaught Place</b>
+                <div class="meta">G‑12, Regal Building, New Delhi 110001</div>
+                <div class="meta">
+                  Mon–Sun: 10:00 – 20:00 • +91 11 4000 1234
+                </div>
+              </div>
+              <a
+                class="pill"
+                target="_blank"
+                rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&query=Connaught+Place+New+Delhi"
+                >Directions</a
+              >
+            </div>
+
+            <div class="store">
+              <div>
+                <b>Prism Optics – Bandra</b>
+                <div class="meta">
+                  Shop 5, Turner Rd, Bandra (W), Mumbai 400050
+                </div>
+                <div class="meta">
+                  Mon–Sun: 10:00 – 21:00 • +91 22 4000 5678
+                </div>
+              </div>
+              <a
+                class="pill"
+                target="_blank"
+                rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&query=Bandra+West+Mumbai"
+                >Directions</a
+              >
+            </div>
+
+            <div class="store">
+              <div>
+                <b>Prism Optics – Koramangala</b>
+                <div class="meta">#42, 5th Block, Bengaluru 560095</div>
+                <div class="meta">
+                  Mon–Sun: 10:00 – 21:00 • +91 80 4000 9876
+                </div>
+              </div>
+              <a
+                class="pill"
+                target="_blank"
+                rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&query=Koramangala+Bengaluru"
+                >Directions</a
+              >
+            </div>
+
+            <div class="store">
+              <div>
+                <b>Prism Optics – Banjara Hills</b>
+                <div class="meta">Road No. 12, Hyderabad 500034</div>
+                <div class="meta">
+                  Mon–Sun: 10:00 – 20:30 • +91 40 4000 2468
+                </div>
+              </div>
+              <a
+                class="pill"
+                target="_blank"
+                rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&query=Banjara+Hills+Hyderabad"
+                >Directions</a
+              >
+            </div>
+          </div>
+
+          <!-- Map (OpenStreetMap Embed) -->
+          <iframe
+            title="Map of India highlighting major cities"
+            class="map"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=68.0%2C6.0%2C97.5%2C37.5&layer=mapnik"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>Questions, prescriptions, or fittings</h2>
+          </div>
+          <div class="meta">
+            Email us at
+            <a href="mailto:care@prismoptics.com">care@prismoptics.com</a> or
+            call <a href="tel:+918000012345">+91 80000 12345</a>
+          </div>
+        </div>
+
+        <div class="contact-card card">
+          <form id="contactForm" aria-labelledby="contactHeading">
+            <h3 id="contactHeading" style="margin: 0 0 6px 0">
+              Send us a message
+            </h3>
+            <div class="grid-2">
+              <label>
+                <span class="sr-only">Full name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full name"
+                  required
+                />
+              </label>
+              <label>
+                <span class="sr-only">Email</span>
+                <input type="email" name="email" placeholder="Email" required />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span class="sr-only">Phone</span>
+                <input type="tel" name="phone" placeholder="Phone (optional)" />
+              </label>
+              <label>
+                <span class="sr-only">Subject</span>
+                <select name="subject" aria-label="Subject">
+                  <option>General enquiry</option>
+                  <option>Book an eye test</option>
+                  <option>Order status</option>
+                  <option>Bulk / corporate</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              <span class="sr-only">Message</span>
+              <textarea
+                name="message"
+                placeholder="How can we help?"
+                required
+              ></textarea>
+            </label>
+            <div
+              style="
+                display: flex;
+                gap: 12px;
+                align-items: center;
+                flex-wrap: wrap;
+              "
+            >
+              <button class="btn btn-primary" type="submit">Submit</button>
+              <span
+                id="formStatus"
+                class="meta"
+                role="status"
+                aria-live="polite"
+              ></span>
+            </div>
+          </form>
+
+          <div>
+            <div class="card" style="margin-bottom: 12px">
+              <b>Head Office</b>
+              <div class="meta">
+                Level 8, Prism House, MG Road, Bengaluru 560001
+              </div>
+            </div>
+            <div class="card" style="margin-bottom: 12px">
+              <b>Working Hours</b>
+              <div class="meta">
+                Mon–Sat: 10:00 – 19:00 • Sun: 11:00 – 18:00
+              </div>
+            </div>
+            <div class="card">
+              <b>Support</b>
+              <div class="meta">care@prismoptics.com • +91 80000 12345</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-grid">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <div
+            class="logo"
+            aria-hidden="true"
+            style="width: 28px; height: 28px"
+          ></div>
+          <div>
+            © <span id="year"></span> Prism Optics. All rights reserved.
+          </div>
+        </div>
+        <div
+          style="
+            justify-self: end;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+          "
+        >
+          <a class="pill" href="#about">About</a>
+          <a class="pill" href="#collection">Collection</a>
+          <a class="pill" href="#stores">Stores</a>
+          <a class="pill" href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      hamburger?.addEventListener("click", () =>
+        mobileMenu.classList.toggle("open")
+      );
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href");
+          if (id && id.length > 1) {
+            const el = document.querySelector(id);
+            if (el) {
+              e.preventDefault();
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+              mobileMenu.classList.remove("open");
+            }
+          }
+        });
+      });
+
+      // Contact form (demo only)
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("formStatus");
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        status.textContent = "Sending…";
+        setTimeout(() => {
+          status.textContent = "Thanks! Your message has been sent. (Demo)";
+          form.reset();
+        }, 700);
+      });
+
+      // Year in footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

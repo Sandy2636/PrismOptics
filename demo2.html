@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism Optics - Premium Eyewear Collection</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #667eea;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")
+          center/cover;
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 300;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .cta-button:hover {
+        background: white;
+        color: #667eea;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Sections */
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* About Section */
+      .about {
+        background: #f8f9ff;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+      }
+
+      .about-text h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .about-image {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transform: perspective(1000px) rotateY(-5deg);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .about-image:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Collection Section */
+      .collection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-image {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover .product-image img {
+        transform: scale(1.1);
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .product-price {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #667eea;
+      }
+
+      /* Stores Section */
+      .stores {
+        background: #f8f9ff;
+      }
+
+      .stores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .store-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .store-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .store-card h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .store-info {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .store-info p {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Contact Section */
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+
+      .contact-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e1e8ed;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: transform 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 20px;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+      }
+
+      .contact-info p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      /* Footer */
+      footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #667eea;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        line-height: 1.6;
+      }
+
+      .footer-section a:hover {
+        color: white;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .about-content,
+        .contact-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .about-image {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">Prism Optics</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#stores">Stores</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>See The World Clearly</h1>
+        <p>
+          Premium eyewear that combines cutting-edge technology with timeless
+          style. Discover your perfect pair today.
+        </p>
+        <a href="#collection" class="cta-button">Explore Collection</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title fade-in">About Prism Optics</h2>
+        <div class="about-content">
+          <div class="about-text fade-in">
+            <h3>Crafting Vision Since 1985</h3>
+            <p>
+              At Prism Optics, we believe that exceptional vision deserves
+              exceptional eyewear. For over three decades, we've been at the
+              forefront of optical innovation, combining advanced lens
+              technology with sophisticated design.
+            </p>
+
+            <p>
+              Our commitment to quality extends beyond just creating beautiful
+              frames. We use premium materials, precision engineering, and
+              expert craftsmanship to ensure that every pair of glasses we
+              create meets the highest standards of comfort, durability, and
+              visual clarity.
+            </p>
+
+            <p>
+              From our state-of-the-art manufacturing facilities to our
+              personalized fitting services, everything we do is focused on one
+              goal: helping you see the world in perfect clarity while looking
+              absolutely stunning.
+            </p>
+          </div>
+          <div class="about-image fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1556306535-38febf6782e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="About Prism Optics"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Collection</h2>
+        <div class="collection-grid">
+          <div class="product-card fade-in">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Classic Aviators"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Classic Aviators</h3>
+              <p class="product-price">$299</p>
+            </div>
+          </div>
+
+          <div class="product-card fade-in">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Modern Frames"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Modern Frames</h3>
+              <p class="product-price">$399</p>
+            </div>
+          </div>
+
+          <div class="product-card fade-in">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1577803645773-f96470509666?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Designer Sunglasses"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Designer Sunglasses</h3>
+              <p class="product-price">$449</p>
+            </div>
+          </div>
+
+          <div class="product-card fade-in">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Vintage Collection"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Vintage Collection</h3>
+              <p class="product-price">$349</p>
+            </div>
+          </div>
+
+          <div class="product-card fade-in">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Sport Collection"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Sport Collection</h3>
+              <p class="product-price">$279</p>
+            </div>
+          </div>
+
+          <div class="product-card fade-in">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Executive Series"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Executive Series</h3>
+              <p class="product-price">$599</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stores Section -->
+    <section id="stores" class="stores">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Locations</h2>
+        <div class="stores-grid">
+          <div class="store-card fade-in">
+            <h3>Downtown Flagship</h3>
+            <div class="store-info">
+              <p>
+                <strong>Address:</strong> 123 Main Street, Downtown District
+              </p>
+              <p><strong>Phone:</strong> (555) 123-4567</p>
+              <p><strong>Hours:</strong> Mon-Sat 9AM-8PM, Sun 11AM-6PM</p>
+              <p>
+                <strong>Services:</strong> Full optical services, eye exams,
+                contact lens fitting
+              </p>
+            </div>
+          </div>
+
+          <div class="store-card fade-in">
+            <h3>Westside Mall</h3>
+            <div class="store-info">
+              <p>
+                <strong>Address:</strong> 456 Shopping Center Blvd, Westside
+                Mall
+              </p>
+              <p><strong>Phone:</strong> (555) 234-5678</p>
+              <p><strong>Hours:</strong> Mon-Sat 10AM-9PM, Sun 12PM-7PM</p>
+              <p>
+                <strong>Services:</strong> Frame selection, lens replacement,
+                repairs
+              </p>
+            </div>
+          </div>
+
+          <div class="store-card fade-in">
+            <h3>Northpoint Plaza</h3>
+            <div class="store-info">
+              <p>
+                <strong>Address:</strong> 789 North Avenue, Northpoint Plaza
+              </p>
+              <p><strong>Phone:</strong> (555) 345-6789</p>
+              <p>
+                <strong>Hours:</strong> Mon-Fri 9AM-7PM, Sat 9AM-6PM, Sun Closed
+              </p>
+              <p>
+                <strong>Services:</strong> Designer collections, custom fittings
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title fade-in">Contact Us</h2>
+        <div class="contact-content">
+          <div class="contact-form fade-in">
+            <form>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+
+          <div class="contact-info fade-in">
+            <h3>Get In Touch</h3>
+            <p><strong>Customer Service:</strong><br />(555) 123-EYES (3937)</p>
+            <p><strong>Email:</strong><br />info@prismoptics.com</p>
+            <p>
+              <strong>Business Hours:</strong><br />Monday - Friday: 8AM -
+              8PM<br />Saturday: 9AM - 6PM<br />Sunday: 11AM - 5PM
+            </p>
+            <p>
+              <strong>Headquarters:</strong><br />Prism Optics Corporate<br />1000
+              Vision Boulevard<br />Optical City, OC 12345
+            </p>
+            <p>
+              Follow us on social media for the latest updates, new arrivals,
+              and exclusive offers!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Prism Optics</h3>
+            <p>
+              Premium eyewear for the modern world. Experience the perfect blend
+              of style, comfort, and clarity.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#about">About Us</a></p>
+            <p><a href="#collection">Collection</a></p>
+            <p><a href="#stores">Store Locations</a></p>
+          </div>
+          <div class="footer-section">
+            <h3>Customer Care</h3>
+            <p><a href="#contact">Contact Us</a></p>
+            <p><a href="#">Warranty Info</a></p>
+            <p><a href="#">Care Instructions</a></p>
+            <p><a href="#">Returns & Exchanges</a></p>
+          </div>
+        </div>
+        <p>
+          &copy; 2025 Prism Optics. All rights reserved. | Designed with
+          precision and care.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 100) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Form submission handler
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Simple form validation
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+
+        if (name && email && subject && message) {
+          alert("Thank you for your message! We'll get back to you soon.");
+          this.reset();
+        } else {
+          alert("Please fill in all required fields.");
+        }
+      });
+
+      // Add some interactive hover effects
+      document.querySelectorAll(".product-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-10px) scale(1.02)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+
+      // Add loading animation
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.3s ease";
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
